@@ -2,11 +2,12 @@
 
 import { useMemo } from "react";
 import { Box, Button, TextField, Typography } from "@mui/material";
+import Link from "next/link";
+import Image from "next/image";
+import { useParams } from "next/navigation";
 
 import MeetingRoom from "../meet/components/MeetingRoom";
 import { useMeetRoom } from "../meet/hooks/useMeetRoom";
-import { useParams } from "next/navigation";
-import Link from "next/link";
 
 export default function PublicRoomPage() {
   const params = useParams();
@@ -68,7 +69,7 @@ export default function PublicRoomPage() {
           padding: "4px",
         }}
       >
-        <img height={65} src="./image.png" alt="title" />
+        <Image src="/image.png" alt="title" width={65} height={65} />
         <Typography variant="h3">
           <Link href="/">UNORA</Link>
         </Typography>
@@ -86,7 +87,7 @@ export default function PublicRoomPage() {
           }}
         >
           <Typography variant="h4" component="h1">
-            Join Room "{roomId}"
+            Join Room &quot;{roomId}&quot;
           </Typography>
           <Typography variant="body2" color="text.secondary">
             This room does not require a password. Share the URL to invite

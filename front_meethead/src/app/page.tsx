@@ -1,11 +1,12 @@
 "use client";
 
 import { Typography } from "@mui/material";
+import Link from "next/link";
+import Image from "next/image";
 import JoinRoomForm from "./meet/components/JoinRoomForm";
 import MeetingRoom from "./meet/components/MeetingRoom";
 import { useMeetRoom } from "./meet/hooks/useMeetRoom";
 import styles from "./page.module.css";
-import Link from "next/link";
 
 export default function MeetAppPage() {
   const {
@@ -56,7 +57,7 @@ export default function MeetAppPage() {
           padding: "4px",
         }}
       >
-        <img height={65} src="./image.png" alt="title" />
+        <Image src="/image.png" alt="title" width={65} height={65} />
         <Typography variant="h3">
           <Link href="/">UNORA</Link>
         </Typography>

@@ -148,7 +148,7 @@ export function useMeetRoom(options: UseMeetRoomOptions = {}) {
         updatePeerStream(receiverSocketId, remoteStream);
       });
 
-      peer.on("error", (err: any) => {
+      peer.on("error", (err: unknown) => {
         console.error("createPeer: peer error", {
           peerId: receiverSocketId,
           err,
@@ -188,7 +188,7 @@ export function useMeetRoom(options: UseMeetRoomOptions = {}) {
         updatePeerStream(callerId, remoteStream);
       });
 
-      peer.on("error", (err: any) => {
+      peer.on("error", (err: unknown) => {
         console.error("addPeer: peer error", { peerId: callerId, err });
       });
 
@@ -310,7 +310,7 @@ export function useMeetRoom(options: UseMeetRoomOptions = {}) {
     setChatInput("");
     setShowChat(false);
     setIsPublicRoom(roomIsPublic);
-  }, [isSharingScreen, roomIsPublic, stopScreenShare]);
+  }, [isPublicRoom, isSharingScreen, roomIsPublic, stopScreenShare]);
 
   const sendChatMessage = useCallback(
     (event: FormEvent<HTMLFormElement>) => {
@@ -521,6 +521,7 @@ export function useMeetRoom(options: UseMeetRoomOptions = {}) {
     addPeer,
     clearPeers,
     createPeer,
+    dedupePeerInfos,
     inRoom,
     myStream,
     password,

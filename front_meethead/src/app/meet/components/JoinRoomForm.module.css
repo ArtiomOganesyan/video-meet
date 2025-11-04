@@ -1,0 +1,104 @@
+/* Landing-style styles for JoinRoomForm using variables from globals.css */
+.page {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.card {
+  display: flex;
+  width: min(1040px, 100%);
+  border-radius: 20px;
+  overflow: hidden;
+  color: var(--text);
+  box-shadow: 0 24px 55px var(--shadow);
+  border: 1px solid var(--border);
+}
+
+.hero {
+  width: 52%;
+  padding: clamp(2.5rem, 5vw, 3.5rem);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 16px;
+  background-color: var(--accent);
+  color: var(--text);
+}
+
+.brand {
+  letter-spacing: -0.02em;
+  color: whitesmoke;
+}
+
+.tagline {
+  color: rgb(223, 223, 223);
+}
+
+.description {
+  color: rgb(223, 223, 223);
+}
+
+.formArea {
+  width: 50%;
+  padding: 36px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  justify-content: center;
+  background: var(--surface-alt);
+  border-left: 1px solid var(--border);
+}
+
+.formTitle {
+  margin-bottom: 8px;
+}
+
+.error {
+  color: var(--accent);
+  font-weight: 600;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  margin-top: 8px;
+}
+
+.joinButton {
+  margin-top: 4px;
+  width: 100%;
+}
+
+/* Responsive: stack for small screens */
+@media (max-width: 960px) {
+  .card {
+    flex-direction: column;
+  }
+
+  .hero,
+  .formArea {
+    width: 100%;
+  }
+
+  .formArea {
+    border-left: none;
+    border-top: 1px solid var(--border);
+  }
+}
+
+@media (max-width: 640px) {
+  .page {
+    /* padding: clamp(1.75rem, 8vw, 2.5rem) 1.25rem; */
+  }
+
+  .hero,
+  .formArea {
+    padding: 2rem;
+  }
+
+  .brand {
+    font-size: 2rem;
+  }
+}

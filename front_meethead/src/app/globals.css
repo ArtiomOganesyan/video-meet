@@ -1,0 +1,25 @@
+/* Global palette and baseline styles for MeetHead */
+
+:root {
+  --primary: #a13d83;
+  --accent: #6d1962;
+  --surface: #ffffff;
+  --surface-alt: #f9fafb;
+  --text: #111827;
+  --text-muted: #6b7280;
+  --border: #a482a5;
+  --shadow: rgba(0, 0, 0, 0.1);
+  --danger: #dc2626;
+}
+
+body {
+  background: white;
+}
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  text-decoration: none;
+  color: inherit;
+}

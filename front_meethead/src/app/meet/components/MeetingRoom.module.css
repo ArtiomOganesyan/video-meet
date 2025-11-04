@@ -1,0 +1,210 @@
+.meetingRoom {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.mainContent {
+  display: flex;
+  flex-direction: column;
+  padding: 24px 48px;
+}
+
+.videoSection {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.videoGrid {
+  display: grid;
+  width: 100%;
+  gap: 1rem;
+  justify-items: center;
+  grid-template-columns: minmax(0, 1fr);
+  align-items: stretch;
+}
+
+.videoGridSolo {
+  justify-content: center;
+}
+
+.videoGridCols2 {
+  grid-template-columns: minmax(0, 1fr);
+}
+
+@media (min-width: 600px) {
+  .videoGridCols2 {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+.videoGridCols3 {
+  grid-template-columns: minmax(0, 1fr);
+}
+
+@media (min-width: 600px) {
+  .videoGridCols3 {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 900px) {
+  .videoGridCols3 {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+.videoGridCols4 {
+  grid-template-columns: minmax(0, 1fr);
+}
+
+@media (min-width: 600px) {
+  .videoGridCols4 {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 900px) {
+  .videoGridCols4 {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 1200px) {
+  .videoGridCols4 {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}
+
+.videoTile {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  width: 100%;
+  max-width: 100%;
+  min-width: 175px;
+  border-radius: 1rem;
+  overflow: hidden;
+  background: var(--video-surface);
+  border: 1px solid var(--control-border);
+  box-shadow: 0 18px 35px var(--shadow);
+}
+
+.participantTile {
+  max-width: 100%;
+}
+
+.soloTile {
+  width: min(960px, 100%);
+  margin: 0 auto;
+}
+
+.video {
+  display: block;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  background-color: var(--video-surface);
+  border-radius: 1rem;
+  object-fit: cover;
+  max-height: 70vh;
+}
+
+.videoLabel {
+  position: absolute;
+  left: 0.75rem;
+  bottom: 0.75rem;
+  padding: 0.35rem 0.75rem;
+  border-radius: 999px;
+  background: var(--video-label-bg);
+  color: var(--text);
+  font-size: 0.85rem;
+  font-weight: 500;
+  letter-spacing: 0.01em;
+  border: 1px solid var(--control-border);
+  box-shadow: 0 8px 24px var(--shadow);
+  pointer-events: none;
+}
+
+@media (min-width: 768px) {
+  .meetingRoom {
+    gap: 2rem;
+  }
+
+  .videoGrid {
+    gap: 1.25rem;
+  }
+}
+
+/* Bottom controls bar pinned to viewport */
+.controlsBar {
+  position: fixed;
+  left: 50%;
+  bottom: 16px;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 0.5rem;
+  padding: 0.6rem 0.75rem;
+  background: var(--control-surface);
+  backdrop-filter: blur(10px);
+  border-radius: 999px;
+  border: 1px solid var(--control-border);
+  z-index: 1400;
+  align-items: center;
+  box-shadow: 0 18px 40px var(--shadow);
+}
+
+.controlButton {
+  min-width: 44px;
+  padding: 8px 12px;
+  color: var(--text);
+  background: var(--control-button-bg);
+  border-radius: 10px;
+  text-transform: none;
+  border: 1px solid var(--control-border);
+  transition: background-color 0.2s ease, border-color 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.controlButton:hover {
+  background: var(--primary);
+  color: whitesmoke !important;
+  border-color: var(--primary-strong);
+  box-shadow: 0 0 0 2px var(--primary-soft);
+}
+
+.controlButtonActive {
+  background: var(--primary);
+  border-color: var(--primary-strong);
+  box-shadow: 0 0 0 2px var(--primary-soft);
+}
+
+.leaveButton {
+  background: var(--primary) !important;
+  border-color: transparent;
+  color: var(--surface) !important;
+}
+
+.leaveButton:hover {
+  background: var(--danger) !important;
+  color: var(--surface) !important;
+}
+
+@media (max-width: 480px) {
+  .controlsBar {
+    bottom: 12px;
+    padding: 6px;
+    gap: 0.35rem;
+    width: calc(100% - 32px);
+    transform: translateX(-50%);
+    justify-content: space-between;
+  }
+
+  .controlButton {
+    flex: 1;
+    font-size: 0.9rem;
+    padding: 6px 8px;
+    min-width: 0;
+  }
+}

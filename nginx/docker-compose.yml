@@ -47,7 +47,8 @@ services:
       - certbot_conf:/etc/letsencrypt
       - certbot_www:/var/www/certbot
     # This command just sleeps. We will run certbot manually.
-    command: sleep infinity
+    entrypoint: sleep
+    command: infinity
 
 # --- NEW TOP-LEVEL KEY ---
 volumes:

@@ -78,6 +78,8 @@ export default function MeetingRoom({
   onSubmitChat,
   canShareRoom = false,
 }: MeetingRoomProps) {
+  const formatUsersCount = (n: number) =>
+    n === 1 ? `${n} участник` : `${n} участников`;
   const [open, setOpen] = useState(false);
   const [shareFeedback, setShareFeedback] = useState<{
     message: string;
@@ -139,26 +141,26 @@ export default function MeetingRoom({
     try {
       if (navigator.share) {
         await navigator.share({
-          title: `Join ${roomId}`,
-          text: `Join ${username} in room ${roomId}`,
+          title: `Присоединиться к комнате ${roomId}`,
+          text: `Присоединиться к ${username} в комнате ${roomId}`,
           url: shareUrl,
         });
-        handleShareSuccess("Share sheet opened");
+        handleShareSuccess("Диалог шаринга открыт");
         return;
       }
 
       if (navigator.clipboard?.writeText) {
         await navigator.clipboard.writeText(shareUrl);
-        handleShareSuccess("Room link copied to clipboard");
+        handleShareSuccess("Ссылка на комнату скопирована в буфер обмена");
         return;
       }
 
       // Fallback if clipboard API is unavailable
-      window.prompt("Copy this room URL", shareUrl);
-      handleShareSuccess("Room link ready to share");
+      window.prompt("Скопируйте URL комнаты", shareUrl);
+      handleShareSuccess("Ссылка на комнату готова к отправке");
     } catch (error) {
       console.error("Failed to share room URL", error);
-      handleShareError("Unable to share room link");
+      handleShareError("Не удалось поделиться ссылкой на комнату");
     }
   }, [canShareRoom, handleShareError, handleShareSuccess, roomId, username]);
 
@@ -201,10 +203,10 @@ export default function MeetingRoom({
           }}
         >
           <Typography variant="h4" sx={{ fontWeight: 600 }}>
-            Room: {roomId}
+            Комната: {roomId}
           </Typography>
           <Typography variant="h6" sx={{ color: "var(--text-muted)" }}>
-            {usersCount} user{usersCount === 1 ? "" : "s"}
+            {formatUsersCount(usersCount)}
           </Typography>
           <Box
             sx={{
@@ -222,7 +224,7 @@ export default function MeetingRoom({
                 color="secondary"
               >
                 <Typography sx={{ mr: 1.25, fontWeight: 600 }}>
-                  Share
+                  Поделиться
                 </Typography>
                 <ShareIcon fontSize="small" />
               </Button>
@@ -240,7 +242,7 @@ export default function MeetingRoom({
                   : {}),
               }}
             >
-              <Typography sx={{ mr: 1.25, fontWeight: 600 }}>Chat</Typography>
+              <Typography sx={{ mr: 1.25, fontWeight: 600 }}>Чат</Typography>
               <ForumIcon fontSize="small" />
             </Button>
           </Box>
@@ -260,7 +262,7 @@ export default function MeetingRoom({
                 muted
                 className={styles.video}
               />
-              <div className={styles.videoLabel}>{username} (You)</div>
+              <div className={styles.videoLabel}>{username} (Вы)</div>
             </div>
             {peers.map((peerObj) => (
               <PeerVideo
@@ -288,9 +290,9 @@ export default function MeetingRoom({
           onClick={onToggleMic}
           className={controlButtonClass(micOn)}
           startIcon={micOn ? <MicIcon /> : <MicOffIcon />}
-          aria-label={micOn ? "Mute microphone" : "Unmute microphone"}
+          aria-label={micOn ? "Выключить микрофон" : "Включить микрофон"}
         >
-          {micOn ? "Mic" : "Mic Off"}
+          {micOn ? "Микрофон" : "Микрофон выкл"}
         </Button>
 
         <Button
@@ -298,9 +300,9 @@ export default function MeetingRoom({
           onClick={onToggleVideo}
           className={controlButtonClass(videoOn)}
           startIcon={videoOn ? <VideocamIcon /> : <VideocamOffIcon />}
-          aria-label={videoOn ? "Turn off camera" : "Turn on camera"}
+          aria-label={videoOn ? "Выключить камеру" : "Включить камеру"}
         >
-          {videoOn ? "Video" : "Video Off"}
+          {videoOn ? "Видео" : "Видео выкл"}
         </Button>
 
         <Button
@@ -310,9 +312,13 @@ export default function MeetingRoom({
           startIcon={
             isSharingScreen ? <StopScreenShareIcon /> : <ScreenShareIcon />
           }
-          aria-label={isSharingScreen ? "Stop screen sharing" : "Share screen"}
+          aria-label={
+            isSharingScreen
+              ? "Остановить демонстрацию экрана"
+              : "Демонстрация экрана"
+          }
         >
-          {isSharingScreen ? "Stop Share" : "Share"}
+          {isSharingScreen ? "Остановить демонстрацию" : "Демонстрация"}
         </Button>
 
         <Button
@@ -320,9 +326,9 @@ export default function MeetingRoom({
           onClick={onLeave}
           className={[styles.controlButton, styles.leaveButton].join(" ")}
           startIcon={<LogoutIcon />}
-          aria-label="Leave meeting"
+          aria-label="Войти из встречи"
         >
-          Leave
+          Выйти
         </Button>
       </div>
 
@@ -355,7 +361,7 @@ export default function MeetingRoom({
             }}
           >
             <Typography variant="h6" sx={{ fontWeight: 600 }}>
-              Room Chat
+              Чат комнаты
             </Typography>
             <Button
               color="secondary"
@@ -364,7 +370,7 @@ export default function MeetingRoom({
                 onCloseChat();
               }}
             >
-              Close
+              Закрыть
             </Button>
           </Box>
           <Divider sx={{ borderColor: "var(--border)" }} />
@@ -418,14 +424,14 @@ export default function MeetingRoom({
               color="secondary"
               value={chatInput}
               onChange={(e) => onChatInputChange(e.target.value)}
-              placeholder="Type a message..."
+              placeholder="Введите сообщение..."
               multiline
               maxRows={4}
               fullWidth
               size="small"
             />
             <Button type="submit" variant="contained" color="secondary">
-              Send
+              Отправить
             </Button>
           </Box>
         </Box>

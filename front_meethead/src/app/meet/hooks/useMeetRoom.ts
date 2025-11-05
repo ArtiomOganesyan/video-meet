@@ -227,7 +227,7 @@ export function useMeetRoom(options: UseMeetRoomOptions = {}) {
     try {
       if (!navigator.mediaDevices || !navigator.mediaDevices.getDisplayMedia) {
         const msg =
-          "Screen sharing not available: your site is likely served over an insecure origin.";
+          "Демонстрация экрана недоступна: сайт, вероятно, загружается по небезопасному протоколу.";
         console.error(msg);
         setErrorMessage(msg);
         return;
@@ -275,12 +275,12 @@ export function useMeetRoom(options: UseMeetRoomOptions = {}) {
       clearError();
 
       if (!username.trim() || !roomId.trim()) {
-        setErrorMessage("Please enter a username and room name.");
+        setErrorMessage("Пожалуйста, введите имя и название комнаты.");
         return;
       }
 
       if (!myStream) {
-        setErrorMessage("Waiting for camera/mic permissions...");
+        setErrorMessage("Ожидание разрешений на камеру/микрофон...");
         return;
       }
 
@@ -364,7 +364,7 @@ export function useMeetRoom(options: UseMeetRoomOptions = {}) {
       } catch (err) {
         console.error("Failed to get media:", err);
         setErrorMessage(
-          "Failed to access camera and microphone. Please check permissions."
+          "Не удалось получить доступ к камере и микрофону. Проверьте разрешения."
         );
       }
     };

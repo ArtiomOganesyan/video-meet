@@ -87,11 +87,11 @@ export default function PublicRoomPage() {
           }}
         >
           <Typography variant="h4" component="h1">
-            Join Room &quot;{roomId}&quot;
+            Присоединиться к комнате «{roomId}»
           </Typography>
           <Typography variant="body2" color="text.secondary">
-            This room does not require a password. Share the URL to invite
-            others directly.
+            Для этой комнаты пароль не требуется. Поделитесь URL, чтобы
+            пригласить других.
           </Typography>
           {errorMessage ? (
             <Typography color="error" variant="body2">
@@ -106,16 +106,16 @@ export default function PublicRoomPage() {
             <TextField
               color="secondary"
               id="username"
-              label="Your Name"
+              label="Ваше имя"
               variant="outlined"
               value={username}
               onFocus={clearError}
               onChange={(event) => setUsername(event.target.value)}
-              placeholder="Enter your name"
+              placeholder="Введите ваше имя"
               fullWidth
             />
             <Button color="secondary" variant="contained" type="submit">
-              Join Room
+              Присоединиться
             </Button>
           </Box>
         </Box>

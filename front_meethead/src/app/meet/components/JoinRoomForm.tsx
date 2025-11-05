@@ -50,8 +50,8 @@ export default function JoinRoomForm({
             Always on. Always connected.
           </Typography>
           <Typography className={styles.description}>
-            Drop into a room with your crew in seconds. Share a link, lock it
-            down with a password, and focus on the conversation — not the setup.
+            Присоединяйтесь к комнате за секунды. Поделитесь ссылкой, защитите
+            паролем и сосредоточьтесь на разговоре — а не на настройке.
           </Typography>
         </div>
 
@@ -65,7 +65,7 @@ export default function JoinRoomForm({
             variant="h4"
             className={styles.formTitle}
           >
-            Join a Room
+            Войти в комнату
           </Typography>
           {errorMessage ? (
             <div className={styles.error}>{errorMessage}</div>
@@ -75,41 +75,41 @@ export default function JoinRoomForm({
             <TextField
               id="username"
               color="secondary"
-              label="Your Name"
+              label="Ваше имя"
               variant="outlined"
               value={username}
               onChange={handleUsernameChange}
               onFocus={onFieldFocus}
-              placeholder="Enter your name"
+              placeholder="Введите ваше имя"
               fullWidth
             />
 
             <TextField
               id="room-name"
               color="secondary"
-              label="Room Name"
+              label="Название комнаты"
               variant="outlined"
               value={roomId}
               onChange={handleRoomChange}
               onFocus={onFieldFocus}
-              placeholder="Enter room name"
+              placeholder="Введите название комнаты"
               fullWidth
             />
 
             <TextField
               id="password"
               color="secondary"
-              label="Room Password (optional)"
+              label="Пароль комнаты (необязательно)"
               variant="outlined"
               type="password"
               value={password}
               onChange={handlePasswordChange}
               onFocus={onFieldFocus}
-              placeholder="Leave blank for public room"
+              placeholder="Оставьте пустым для публичной комнаты"
             />
 
             <Button color="secondary" variant="contained" type="submit">
-              Join Room
+              Присоединиться
             </Button>
           </form>
         </Box>

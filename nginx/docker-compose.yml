@@ -7,7 +7,7 @@ services:
     environment:
       - NODE_ENV=production
       - PORT=11001
-      - NEXT_PUBLIC_NEST_SERVER_URL=http://backend:11002
+      # - NEXT_PUBLIC_NEST_SERVER_URL=http://backend:11002
     ports:
       - "11001:11001"
     depends_on:

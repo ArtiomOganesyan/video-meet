@@ -34,9 +34,25 @@ services:
       - backend
     ports:
       - "80:80"
+      - "443:443"
     volumes:
       - ./nginx.conf:/etc/nginx/conf.d/default.conf:ro
+      - certbot_conf:/etc/letsencrypt  
+      - certbot_www:/var/www/certbot   
     restart: unless-stopped
+  certbot:
+    image: certbot/certbot
+    container_name: meethead-certbot
+    volumes:
+      - certbot_conf:/etc/letsencrypt
+      - certbot_www:/var/www/certbot
+    # This command just sleeps. We will run certbot manually.
+    command: sleep infinity
+
+# --- NEW TOP-LEVEL KEY ---
+volumes:
+  certbot_conf:
+  certbot_www:
 
 networks:
   default:

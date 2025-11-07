@@ -184,11 +184,6 @@ export default function MeetingRoom({
     .filter(Boolean)
     .join(" ");
 
-  const controlButtonClass = (active?: boolean) =>
-    [styles.controlButton, active ? styles.controlButtonActive : ""]
-      .filter(Boolean)
-      .join(" ");
-
   return (
     <div className={styles.meetingRoom}>
       <main className={styles.mainContent}>
@@ -222,6 +217,7 @@ export default function MeetingRoom({
                 variant="outlined"
                 onClick={handleShareRoom}
                 color="secondary"
+                title="Поделиться ссылкой на комнату"
               >
                 <Typography sx={{ mr: 1.25, fontWeight: 600 }}>
                   Поделиться
@@ -241,6 +237,7 @@ export default function MeetingRoom({
                     }
                   : {}),
               }}
+              title="Чат комнаты"
             >
               <Typography sx={{ mr: 1.25, fontWeight: 600 }}>Чат</Typography>
               <ForumIcon fontSize="small" />
@@ -287,49 +284,49 @@ export default function MeetingRoom({
       >
         <Button
           color="secondary"
+          variant={micOn ? "contained" : "outlined"}
           onClick={onToggleMic}
-          className={controlButtonClass(micOn)}
-          startIcon={micOn ? <MicIcon /> : <MicOffIcon />}
-          aria-label={micOn ? "Выключить микрофон" : "Включить микрофон"}
+          title={micOn ? "Выключить микрофон" : "Включить микрофон"}
         >
-          {micOn ? "Микрофон" : "Микрофон выкл"}
+          {micOn ? <MicIcon /> : <MicOffIcon />}
         </Button>
 
         <Button
           color="secondary"
           onClick={onToggleVideo}
-          className={controlButtonClass(videoOn)}
-          startIcon={videoOn ? <VideocamIcon /> : <VideocamOffIcon />}
-          aria-label={videoOn ? "Выключить камеру" : "Включить камеру"}
+          variant={videoOn ? "contained" : "outlined"}
+          title={videoOn ? "Выключить камеру" : "Включить камеру"}
         >
-          {videoOn ? "Видео" : "Видео выкл"}
+          {videoOn ? <VideocamIcon /> : <VideocamOffIcon />}
         </Button>
 
         <Button
           color="secondary"
           onClick={onToggleScreenShare}
-          className={controlButtonClass(isSharingScreen)}
-          startIcon={
-            isSharingScreen ? <StopScreenShareIcon /> : <ScreenShareIcon />
-          }
-          aria-label={
+          variant={isSharingScreen ? "contained" : "outlined"}
+          title={
             isSharingScreen
               ? "Остановить демонстрацию экрана"
               : "Демонстрация экрана"
           }
         >
-          {isSharingScreen ? "Остановить демонстрацию" : "Демонстрация"}
+          {isSharingScreen ? <StopScreenShareIcon /> : <ScreenShareIcon />}
         </Button>
 
         <Button
           color="secondary"
+          variant="outlined"
+          sx={{
+            ":hover": {
+              background: "red",
+              color: "white",
+              border: "red",
+            },
+          }}
           onClick={onLeave}
-          className={[styles.controlButton, styles.leaveButton].join(" ")}
           startIcon={<LogoutIcon />}
-          aria-label="Войти из встречи"
-        >
-          Выйти
-        </Button>
+          title="Выйти из встречи"
+        />
       </div>
 
       {/* Drawer for Chat - opens from the right. Backdrop (mask) clicks and escape will trigger onClose. */}
@@ -340,7 +337,6 @@ export default function MeetingRoom({
           setOpen(false);
           onCloseChat();
         }}
-        // PaperProps={{ sx: drawerPaperStyles }}
       >
         <Box
           sx={{

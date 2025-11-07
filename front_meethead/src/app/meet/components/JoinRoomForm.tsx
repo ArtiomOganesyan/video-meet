@@ -43,7 +43,7 @@ export default function JoinRoomForm({
     <div className={styles.page}>
       <div className={styles.card}>
         <div className={styles.hero}>
-          <Typography variant="h3" className={styles.brand}>
+          <Typography variant="h2" className={styles.brand}>
             UNORA
           </Typography>
           <Typography className={styles.tagline}>

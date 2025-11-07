@@ -22,13 +22,14 @@
   flex-direction: column;
   justify-content: center;
   gap: 16px;
-  background-color: var(--accent);
+  background-color: #7f4fc3;
   color: var(--text);
 }
 
 .brand {
   letter-spacing: -0.02em;
   color: whitesmoke;
+  font-weight: 600 !important;
 }
 
 .tagline {

@@ -156,8 +156,6 @@
 }
 
 .controlButton {
-  min-width: 44px;
-  padding: 8px 12px;
   color: var(--text);
   background: var(--control-button-bg);
   border-radius: 10px;
@@ -178,17 +176,6 @@
   background: var(--primary);
   border-color: var(--primary-strong);
   box-shadow: 0 0 0 2px var(--primary-soft);
-}
-
-.leaveButton {
-  background: var(--primary) !important;
-  border-color: transparent;
-  color: var(--surface) !important;
-}
-
-.leaveButton:hover {
-  background: var(--danger) !important;
-  color: var(--surface) !important;
 }
 
 @media (max-width: 480px) {

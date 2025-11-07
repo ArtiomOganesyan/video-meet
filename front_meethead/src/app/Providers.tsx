@@ -5,12 +5,12 @@ import { CssBaseline, ThemeProvider, createTheme } from "@mui/material";
 import type { PropsWithChildren } from "react";
 
 const theme = createTheme({
-  // palette: {
-  //   mode: "light",
-  //   primary: {
-  //     main: "var(--primary)",
-  //   },
-  // },
+  palette: {
+    mode: "light",
+    secondary: {
+      main: "#7f4fc3",
+    },
+  },
 });
 
 export default function Providers({ children }: PropsWithChildren) {
